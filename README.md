@@ -3,7 +3,7 @@
 1. Clone the project
 
 ```
-git clone ''
+git clone https://github.com/Vivan1133/Airbnb-hotelService.git
 <ProjectName>
 ```
 
