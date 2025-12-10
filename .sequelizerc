@@ -1,0 +1,9 @@
+// .sequelizerc
+require('ts-node/register');
+
+module.exports = {
+  'config': './src/config/db.config.ts',
+  'models-path': './src/db/models',
+  'seeders-path': './src/db/seeders',
+  'migrations-path': './src/db/migrations',
+};
