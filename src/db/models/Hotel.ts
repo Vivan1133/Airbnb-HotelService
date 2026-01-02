@@ -65,5 +65,6 @@ Hotel.init({
 }, {
     sequelize,
     tableName: "hotels",
-    underscored: true
+    underscored: true,
+    timestamps: true
 })

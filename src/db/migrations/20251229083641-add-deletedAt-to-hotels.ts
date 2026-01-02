@@ -12,7 +12,7 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    await queryInterface.addColumn('Hotels', 'deletedAt', {
+    await queryInterface.addColumn('Hotels', 'DELETED_AT', {
       type: DataTypes.DATE,
       defaultValue: null,
     })
@@ -27,6 +27,6 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
 
-    await queryInterface.removeColumn('Hotels', 'deletedAt')
+    await queryInterface.removeColumn('Hotels', 'DELETED_AT');
   }
 };

@@ -3,9 +3,9 @@ import { Hotel } from "./Hotel";
 import { sequelize } from "./sequelize"
 
 enum Category {
-    BASIC,
-    STANDARD,
-    PREMIUM
+    'BASIC',
+    'STANDARD',
+    'PREMIUM'
 }
 
 export class RoomCategory extends Model<InferAttributes<RoomCategory>, InferCreationAttributes<RoomCategory>> {
@@ -14,6 +14,7 @@ export class RoomCategory extends Model<InferAttributes<RoomCategory>, InferCrea
     declare price : number;
     declare hotelID : number;
     declare roomLeft : number;
+    declare deletedAt : CreationOptional<Date>;
 }
 
 RoomCategory.init({
@@ -41,5 +42,9 @@ RoomCategory.init({
     roomLeft: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    deletedAt: {
+        type: DataTypes.DATE,
+        defaultValue: null,
     }
 }, { sequelize, tableName: 'RoomCategories', underscored: true, timestamps: true } )
