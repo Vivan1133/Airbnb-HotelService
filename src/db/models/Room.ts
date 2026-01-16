@@ -8,9 +8,12 @@ export class Room extends Model<InferAttributes<Room>, InferCreationAttributes<R
     declare id : CreationOptional<number>;
     declare hotelID : number;
     declare roomCategoryID : number;
-    declare bookingID : number | null;
-    declare roomNumber : number;
+    declare bookingID : CreationOptional<number | null>;
+    declare price : number;
     declare dateOfAvailability : Date;
+    declare deletedAt : CreationOptional<Date | null>;
+    declare createdAt : CreationOptional<Date>;
+    declare updatedAt : CreationOptional<Date>;
 }
 
 Room.init({
@@ -29,6 +32,7 @@ Room.init({
     },
     roomCategoryID: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: RoomCategory,
             key: 'id'
@@ -37,13 +41,29 @@ Room.init({
     bookingID: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        unique: true
+        unique: true,
+        defaultValue: null
     },
-    roomNumber: {
+    price: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
     dateOfAvailability: {
         type: DataTypes.DATE,
-    }
+        allowNull: false
+    },
+    createdAt: {
+      type: 'DATE',
+      defaultValue: new Date(),
+    },
+    updatedAt: {
+      type: 'DATE',
+      defaultValue: new Date(),
+    },
+    deletedAt : {
+        type: DataTypes.DATE,
+        allowNull: true,
+        defaultValue: null
+    },
+
 }, { sequelize, tableName: 'Rooms', underscored: true, timestamps: true })
