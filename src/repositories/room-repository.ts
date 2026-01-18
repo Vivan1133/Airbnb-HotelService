@@ -1,4 +1,4 @@
-import { CreationAttributes, InferCreationAttributes, Optional } from "sequelize";
+import { CreationAttributes } from "sequelize";
 import { Room } from "../db/models/Room";
 import { BaseRepository } from "./base-repository";
 

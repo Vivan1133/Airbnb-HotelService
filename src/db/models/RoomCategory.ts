@@ -40,7 +40,8 @@ RoomCategory.init({
         references: {
             model: Hotel,
             key: 'id'
-        }
+        },
+        field: 'hotel_id'
     },
     roomLeft: {
         type: DataTypes.INTEGER,
@@ -58,4 +59,4 @@ RoomCategory.init({
         type: DataTypes.DATE,
         defaultValue: new Date()
     }
-}, { sequelize, tableName: 'RoomCategories', underscored: true, timestamps: true } )
+}, { sequelize, tableName: 'Room_categories', underscored: true, timestamps: true } )

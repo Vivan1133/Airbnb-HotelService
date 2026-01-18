@@ -28,7 +28,8 @@ Room.init({
         references: {
             model: Hotel,
             key: 'id'
-        }
+        },
+        field: "hotel_id"
     },
     roomCategoryID: {
         type: DataTypes.INTEGER,
@@ -36,13 +37,15 @@ Room.init({
         references: {
             model: RoomCategory,
             key: 'id'
-        }
+        },
+        field: "room_category_id"
     },
     bookingID: {
         type: DataTypes.INTEGER,
         allowNull: true,
         unique: true,
-        defaultValue: null
+        defaultValue: null,
+        field: "booking_id"
     },
     price: {
         type: DataTypes.INTEGER,
@@ -50,7 +53,8 @@ Room.init({
     },
     dateOfAvailability: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        field: "date_of_avail"
     },
     createdAt: {
       type: 'DATE',
