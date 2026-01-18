@@ -6,6 +6,7 @@ import { appErrorHandler, genericErrorHandler } from './middlewares/error.middle
 import logger from './config/logger.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import { setupRoomGenerationWorker } from './processors/roomGeneration.processor';
+import { startScheduler } from './schedulers/roomSchedular';
 const app = express();
 
 app.use(express.json());
@@ -32,4 +33,5 @@ app.listen(serverConfig.PORT, () => {
     logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
     logger.info(`Press Ctrl+C to stop the server.`);
     setupRoomGenerationWorker();
+    startScheduler()
 });
