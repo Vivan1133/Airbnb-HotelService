@@ -1,7 +1,7 @@
 export enum Category {
-    'BASIC',
-    'STANDARD',
-    'PREMIUM'
+  BASIC = 'BASIC',
+  STANDARD = 'STANDARD',
+  PREMIUM = 'PREMIUM',
 }
 
 export type CreateRoomCategoryDto = {

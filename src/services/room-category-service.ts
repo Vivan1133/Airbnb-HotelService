@@ -12,6 +12,21 @@ export async function createRoomCategoryService(roomCategoryData: CreateRoomCate
     return response;
 }
 
+export async function getAllRoomCategoryService() {
+    const response = await roomCategory.getAll();
+    return response;
+}
+
+export async function getRoomCategoryByIdService(id : number) {
+    const response = await roomCategory.getById(id);
+    return response;
+}
+
+export async function deleteRoomCategoryService(id: number) {
+    await roomCategory.softDelete(id);
+    return true;
+}
+
 
 export async function getRoomCategoryByHotelIdService(id : number) {
     const hotel = await hotelRepository.getById(id);
