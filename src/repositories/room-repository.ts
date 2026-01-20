@@ -1,4 +1,4 @@
-import { CreationAttributes } from "sequelize";
+import { CreationAttributes, Op } from "sequelize";
 import { Room } from "../db/models/Room";
 import { BaseRepository } from "./base-repository";
 
@@ -54,4 +54,28 @@ export class RoomRepo extends BaseRepository<Room> {
         }));
     }
 
+    async findByRoomCategoryIdAndDateRange(roomCategoryId : number, startDate : Date, endDate : Date) {
+        return this.model.findAll({
+            where: {
+                roomCategoryID: roomCategoryId,
+                dateOfAvailability: {
+                    [Op.between]: [startDate, endDate]
+                },
+                deletedAt: null
+            }
+        });
+    }
+
+    async updateBookingIdToRooms(bookingId : number, roomIds : number[]) {
+        return this.model.update(
+            { bookingID : bookingId },
+            {
+                where : {
+                    id : {
+                        [Op.in] : roomIds
+                    }
+                }
+            }
+        );
+    }      
 }
